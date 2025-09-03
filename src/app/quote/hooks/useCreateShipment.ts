@@ -1,7 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { createShipment } from '../api';
+import { createShipment } from '../dhl-api';
 import { formatError } from '../utility';
+import { useState } from 'react';
 
 export const useCreateShipment = (
   shouldAddExportDeclaration: boolean,
@@ -9,18 +10,26 @@ export const useCreateShipment = (
 ) => {
   const router = useRouter();
 
+  const [loadingState, setLoadingState] = useState<{
+    status: 'idle' | 'loading' | 'error';
+  }>({ status: 'idle' });
+
   const bookShipment = async (quoteId: string) => {
+    setLoadingState({ status: 'loading' });
     try {
       const res = await createShipment(quoteId, shouldAddExportDeclaration);
       if ('id' in res) {
         router.push(`/shipment/${res.id}`);
       } else {
+        setLoadingState({ status: 'error' });
         onError(formatError(res));
       }
     } catch (err) {
+      setLoadingState({ status: 'error' });
       onError(formatError(err));
     }
+    setLoadingState({ status: 'idle' });
   };
 
-  return { bookShipment };
+  return { bookShipment, loadingState };
 };

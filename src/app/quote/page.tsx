@@ -31,11 +31,13 @@ export default function Page() {
     origin,
     destination,
     strictOriginValidation,
-    () => setErrorMessage(null)
+    () => {
+      setErrorMessage(null);
+      setSelectedServicePointOrLocker(null);
+    }
   );
-  const { bookShipment } = useCreateShipment(shouldAddExportDeclaration, e =>
-    setErrorMessage(e)
-  );
+  const { loadingState: shipmentLoadingState, bookShipment } =
+    useCreateShipment(shouldAddExportDeclaration, e => setErrorMessage(e));
 
   const errorRef = useRef<HTMLDivElement | null>(null);
 
@@ -49,11 +51,14 @@ export default function Page() {
     quotesState.status === 'success'
       ? quotesState.servicePointAndLockerQuotes.map(quote => ({
           quoteId: quote.id,
+          messages: quote.messages,
           ...quote.deliveryService,
         }))
       : [];
 
-  const loading = quotesState.status === 'loading';
+  const loading =
+    quotesState.status === 'loading' ||
+    shipmentLoadingState.status === 'loading';
 
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-start justify-items-center min-h-screen p-8 pb-20 gap-12 sm:p-20 bg-gray-50 text-gray-600 overflow-y-auto">

@@ -28,6 +28,11 @@ export const ServicePointBooking = ({
         onChange={onSelect}
         options={options}
       />
+      {selected?.messages && selected.messages.length > 0 && (
+        <span>
+          Messages: <pre>{JSON.stringify(selected.messages, null, 2)}</pre>
+        </span>
+      )}
       <Button onClick={onBook} disabled={loading || !selected}>
         {loading ? 'Loading…' : 'Book shipment'}
       </Button>

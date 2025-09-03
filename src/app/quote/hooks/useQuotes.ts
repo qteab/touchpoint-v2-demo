@@ -1,7 +1,7 @@
 'use client';
 import { Address } from '@/types';
 import { useState } from 'react';
-import { getQuotes } from '../api';
+import { getQuotes } from '../dhl-api';
 import {
   isExpressQuote,
   isServicePointOrLockerQuote,
@@ -38,8 +38,7 @@ export const useQuotes = (
       }
     } catch (err) {
       setState({ status: 'error', message: formatError(err) });
-    }
-    finally {
+    } finally {
       onComplete?.();
     }
   };
