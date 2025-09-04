@@ -1,12 +1,13 @@
 'use server';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getShipmentById(id: string): Promise<any> {
+import { Shipment } from '../types';
+
+export async function getShipmentById(id: string): Promise<Shipment> {
   if (!process.env.DHL_API_KEY || !process.env.BASE_URL) {
     throw new Error('Missing environment variables');
   }
   const data = await fetch(
-    `${process.env.BASE_URL}/v2/tradera/shipment/${id}`,
+    `${process.env.BASE_URL}/v2/tradera/shipment/${id}?label=true&qrCodeFormat=png`,
     {
       method: 'GET',
       headers: {
@@ -15,6 +16,6 @@ export async function getShipmentById(id: string): Promise<any> {
       },
     }
   );
-  const quotes = await data.json();
-  return quotes;
+  const shipment = await data.json();
+  return shipment as Shipment;
 }

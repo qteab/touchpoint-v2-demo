@@ -1,8 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { createShipment } from '../dhl-api';
-import { formatError } from '../utility';
 import { useState } from 'react';
+import { formatError } from '@/utility';
 
 export const useCreateShipment = (
   shouldAddExportDeclaration: boolean,

@@ -7,7 +7,7 @@ import {
   isServicePointOrLockerQuote,
   QuotesState,
 } from '../types';
-import { formatError } from '../utility';
+import { formatError } from '@/utility';
 
 export const useQuotes = (
   origin: Address,
