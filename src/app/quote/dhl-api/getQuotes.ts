@@ -16,7 +16,7 @@ export async function getQuotes({
     throw new Error('Missing environment variables');
   }
   const data = await fetch(
-    `${process.env.BASE_URL}/v2/tradera/quote?strictOriginValidation=${
+    `${process.env.BASE_URL}/v2/quote?strictOriginValidation=${
       strictOriginValidation !== undefined ? strictOriginValidation : true
     }&skipPriceCalculation=true`,
     {
@@ -37,6 +37,9 @@ export async function getQuotes({
           phoneNumber: '123456',
           name: 'Test',
           email: 'test@qte.se',
+        },
+        alternativePayer: {
+          id: '200052461',
         },
         destination: destination,
         additionalServices: {

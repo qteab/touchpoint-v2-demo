@@ -40,7 +40,7 @@ export async function createShipment(
     : undefined;
 
   const data = await fetch(
-    `${process.env.BASE_URL}/v2/tradera/shipment?label=true&qrCodeFormat=png&qrCodeSize=300&skipPriceCalculation=true`,
+    `${process.env.BASE_URL}/v2/shipment?label=true&qrCodeFormat=png&qrCodeSize=300&skipPriceCalculation=true`,
     {
       method: 'POST',
       headers: {

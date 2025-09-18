@@ -29,7 +29,7 @@ export async function findNearestServicePoints(
     throw new Error('Missing environment variables');
   }
   const data = await fetch(
-    `${process.env.BASE_URL}/v2/tradera/servicepoint/findnearest`,
+    `${process.env.BASE_URL}/v2/servicepoint/findnearest`,
     {
       method: 'POST',
       headers: {

@@ -7,7 +7,7 @@ export async function getShipmentById(id: string): Promise<Shipment> {
     throw new Error('Missing environment variables');
   }
   const data = await fetch(
-    `${process.env.BASE_URL}/v2/tradera/shipment/${id}?label=true&qrCodeFormat=png`,
+    `${process.env.BASE_URL}/v2/shipment/${id}?label=true&qrCodeFormat=png`,
     {
       method: 'GET',
       headers: {
