@@ -14,6 +14,10 @@ export async function createShipment(
         declaredValue: 100,
         declaredValueCurrency: 'SEK',
         exportDeclaration: {
+          customerIdentification: {
+            type: 'SOCIAL_SECURITY_NUMBER',
+            identificationNumber: '1234567890',
+          },
           lineItems: [
             {
               number: 1,
