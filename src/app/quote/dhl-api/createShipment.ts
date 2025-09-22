@@ -18,6 +18,7 @@ export async function createShipment(
             type: 'SOCIAL_SECURITY_NUMBER',
             identificationNumber: '1234567890',
           },
+          exportReasonType: 'permanent',
           lineItems: [
             {
               number: 1,

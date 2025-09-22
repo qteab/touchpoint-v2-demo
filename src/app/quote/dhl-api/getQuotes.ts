@@ -30,16 +30,13 @@ export async function getQuotes({
           email: 'test@qte.se',
           references: 'Test',
           name: 'Qte Development AB',
-          phoneNumber: '123456',
+          phoneNumber: '+46761234567',
         },
         origin: origin,
         recipient: {
-          phoneNumber: '123456',
+          phoneNumber: '+46761234567',
           name: 'Test',
           email: 'test@qte.se',
-        },
-        alternativePayer: {
-          id: '200052461',
         },
         destination: destination,
         additionalServices: {
