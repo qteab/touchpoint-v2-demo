@@ -1,5 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Intro
+
+This project is meant to serve as an exploratory, local demo of the Touchpoint V2 API with its quoting and shipment flow. 
+
+There is no live demo available, and the project is meant to be served on your local machine.
 
 ## Getting Started
 
